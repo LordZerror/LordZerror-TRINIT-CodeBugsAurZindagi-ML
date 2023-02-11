@@ -2,6 +2,7 @@ import React from "react";
 import './LandingPage.css'
 import logo from '../../assets/Icon.png'
 import illustration from '../../assets/illustration.png'
+import {Link} from 'react-router-dom'
 
 const LandingPage = () => {
   return (
@@ -12,8 +13,7 @@ const LandingPage = () => {
           <h1 className="title"><span className="title-crop">Crop</span>Predictor</h1>
         </div>
         <div className="actions">
-          <button className="signin-button">Sign In</button>
-          <button className="signup-button">Sign Up</button>
+          <Link to='/crop-predictor'><button className="signup-button">Continue</button></Link>
         </div>
       </header>
       <div className="illustration-section">
