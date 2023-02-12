@@ -10,12 +10,12 @@ const App = () => {
   async function onSubmit(e) {
     e.preventDefault(); 
 
-    const District = location.district;
-    const State = location.state;
-    const Season = seasonCrop
-    const formData = {District,State,Season}
+    const district = location.district;
+    const state = location.state;
+    const season = seasonCrop
+    const formData = {state,district,season}
 
-    axios.post('http://localhost:8000/api/messages/', formData)
+    axios.post('http://127.0.0.1:8000/api/messages/', formData)
       .then(response => {
         console.log(response);
       })

@@ -23,5 +23,6 @@ router.register(r'messages', views.cropView, 'message')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('predictions/', include('core.urls')),
 ]
