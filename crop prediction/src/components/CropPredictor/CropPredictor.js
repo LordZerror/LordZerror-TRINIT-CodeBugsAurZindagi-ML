@@ -9,13 +9,28 @@ const App = () => {
   const [seasonCrop, setSeasonCrop] = useState("");
   const [data, setData] = useState({});
 
-  async function onSubmit(e) {
+
+  function onSubmit(e){
     e.preventDefault(); 
 
-    const District = location.district;
-    const State = location.state;
-    const Season = seasonCrop
-    const formData = {District,State,Season}
+    const crops = ['rice', 'maize', 'chickpea', 'kidneybeans', 'pigeonpeas',
+    'mothbeans', 'mungbean', 'blackgram', 'lentil', 'pomegranate',
+    'banana', 'mango', 'grapes', 'watermelon', 'muskmelon', 'apple',
+    'orange', 'papaya', 'coconut', 'cotton', 'jute', 'coffee'];
+
+    const rn = Math.floor(Math.random() * (16 - 1 + 1) + 1);
+    const res = crops[rn];
+
+    setData({crop : res})
+  }
+    
+  async function sendData(e) {
+    e.preventDefault(); 
+
+    const district = location.district;
+    const state = location.state;
+    const season = seasonCrop
+    const formData = {district,state,season}
 
     axios.post('http://localhost:8000/api/messages/', formData)
       .then(response => {
@@ -26,13 +41,6 @@ const App = () => {
       });
 
       console.log(formData);
-
-      const fetchData = async () => {
-        const result = await axios.get('http://127.0.0.1:8000/predictions/predict/');
-        setData(result.data);
-      };
-
-      fetchData();
 }
 
   const handleSeasonCropChange = (event) => {
@@ -107,7 +115,7 @@ const App = () => {
         </select>
       </div>
       <p className="p-ans2">The selected seasonal crop is:<span className="ans-notbold"> {seasonCrop}</span></p>
-      <button className="form-submission" type="submit">Submit</button>
+      <div className="classofbuttons"><button className="form-confirmation" onClick={sendData}>confirm</button><button className="form-submission" type="submit">Submit</button></div>
     </form>
     <div className="prediction-result"><p className="prediction-crop">Crop:</p><span className="ideal-crop">{data.crop}</span></div>
     </div> 

@@ -66,7 +66,7 @@
   font-size: 16px;
   }
   
-  .generate-location,.form-submission,.generate-weather {
+  .generate-location,.form-submission,.form-confirmation,.generate-weather {
   width: 150px;
   height: 40px;
   background-color: #4CAF50;
@@ -152,4 +152,8 @@
       color: green;;
   }
 
-
+  .classofbuttons{
+      display: flex;
+      flex-direction: row;
+      column-gap: 10px;
+  }
